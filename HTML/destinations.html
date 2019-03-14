@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Oswald|Roboto" rel="stylesheet">
+    <link rel='icon' href='../img/favicon.ico' type='image/x-icon'/ >
+    <title>Backpacker Nepal | Destinations</title>
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <strong><a class="navbar-brand" href="../index.html"><span class="make_orange">Backpacker</span> Nepal</a></strong>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown active">
+          <a href="destinations.html" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="destinations.html">All Destinations</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="kathmandu.html">Kathmandu</a></li>
+            <li><a href="pokhara.html">Pokhara</a></li>
+            <li><a href="chitwan.html">Chitwan</a></li>
+            <li><a href="lumbini.html">Lumbini</a></li>
+            <li><a href="bhaktapur.html">Bhaktapur</a></li>
+            <li><a href="patan.html">Patan</a></li>
+            <li><a href="patan.html">Dhulikhel</a></li>
+          </ul>
+        <li class="dropdown">
+          <a href="hiking.html" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hiking<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="hiking.html">All Hikes</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Hiking Guides</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="ebctrek.html">Everest Base Camp Trek</a></li>
+            <li><a href="annapurna.html">Annapurna Circuit Trek</a></li>
+            <li><a href="annapurnasanctrek.html">Annapurna Sanctuary Trek</a></li>
+          </ul>
+        <li><a href="volunteering.html">Volunteering</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- Google Maps -->
+<div class="container-fluid">
+<div id="map"></div>
+
+<script>
+  function initMap(){
+    // Map options
+    var options = {
+      zoom:7,
+      center:{lat:28.224221, lng: 83.972691}
+    }
+
+    // New map
+    var map = new google.maps.Map(document.getElementById('map'), options);
+
+
+    /*
+    // Add marker
+    var marker = new google.maps.Marker({
+      position:{lat:42.4668,lng:-70.9495},
+      map:map,
+      icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+    });
+
+    var infoWindow = new google.maps.InfoWindow({
+      content:'<h1>Lynn MA</h1>'
+    });
+
+    marker.addListener('click', function(){
+      infoWindow.open(map, marker);
+    });
+    */
+
+
+    // Array of markers
+    var markers = [
+      {
+        coords:{lat:27.719580, lng: 85.323726},
+        content:'<div class="infowindow"><h1>Kathmandu</h1><p>Explore Kathmandu with its beautiful historic sites.</p><p><a class="btn" href="#">Read more</a></p></div>',
+      },
+      {
+        coords:{lat:28.256569, lng: 83.997803},
+        content:'<div class="infowindow"><h1>Pokhara</h1><p>Pokhara is for most people their favorite destination in Nepal and there’s a valid reason for that..</p><p><a class="btn" href="#">Read more</a></p></div>',
+      },
+      {
+        coords:{lat:27.570977, lng: 84.489459},
+        content:'<div class="infowindow"><h1>Chitwan</h1><p>Fancy a safari? With tigers, crocodiles and elephants Chitwan National Park is the best place in Nepal to enjoy animals.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:27.509435, lng: 83.291767},
+        content:'<div class="infowindow"><h1>Lumbini</h1><p>Lumbini is known as the birthplace of Buddha. If you’re interested in Buddhism you will like this place.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:27.671811, lng: 85.428544},
+        content:'<div class="infowindow"><h1>Bhaktapur</h1><p>Bhaktapur is an open air museum. Despite the 2015 earthquake it’s still a beautiful area with a lot of historic sights.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:27.665374, lng: 85.319381},
+        content:'<div class="infowindow"><h1>Patan</h1><p>If you’re in Kathmandu you’ve to visit Patan. It’s a typical historic site with a lot of tempels.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:27.626204, lng: 85.556942},
+        content:'<div class="infowindow"><h1>Dhulikhel</h1><p>Not a lot of people go to Dhulikhel but it’s one of the best places if you want a view over the Himalaya.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:28.005499, lng: 86.859933},
+        content:'<div class="infowindow"><h1>Everest Basecamp Trek</h1><p>Looking for a challenge? Hike to the basecamp of Mount Everest and get a taste of climbing to the summit.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:28.985414, lng: 83.984515},
+        content:'<div class="infowindow"><h1>Annapurna Circuit Trek Trek</h1><p>Probably the most famous hike of Nepal and definitely one of the best hikes in the world.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+      {
+        coords:{lat:28.530465, lng: 83.878084},
+        content:'<div class="infowindow"><h1>Annapurna Sanctuary Trek Trek</h1><p>Annapurna Sanctuary trek is a short but stunning hike to Annapurna Base Camp.</p><p><a class="btn" href="#">Read more</a></p></div>'
+      },
+    ];
+
+    // Loop through markers
+    for(var i = 0;i < markers.length;i++){
+      // Add marker
+      addMarker(markers[i]);
+    }
+
+    // Add Marker Function
+    function addMarker(props){
+      var marker = new google.maps.Marker({
+        position:props.coords,
+        map:map,
+        //icon:props.iconImage
+      });
+
+      // Check for customicon
+      if(props.iconImage){
+        // Set icon image
+        marker.setIcon(props.iconImage);
+      }
+
+      // Check content
+      if(props.content){
+        var infoWindow = new google.maps.InfoWindow({
+          content:props.content
+        });
+
+        marker.addListener('click', function(){
+          infoWindow.open(map, marker);
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'resize', function() {
+                infowindow.open(map);
+              });
+
+    }
+
+  }
+</script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-2-JvARkon6DsvdN7qIOZ-Yr49iQzPo&callback=initMap">
+  </script>
+
+</div>
+
+<!-- list of destinations -->
+<div class="container-fluid">
+  <div class="intro">
+<h1>Top destinations Nepal</h1>
+<br>
+<p class="lead">Nepal has a perfect balance between tourism and pureness. Compared to other countries not everything is touched by tourism but there are enough facilities to make your stay comfortable. If you’re looking for the best hikes, unique travel experiences or want to connect with the friendliest people in the world, Nepal has it all. Backpacking in Nepal is cheap and versatile. What makes it one of the best countries in the world for backpacking.  See the best destinations below and explore the rooftop of the world.</p>
+</div>
+</div>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-9 col-md-9 col-sm-9">
+			<div class="row article">
+          <strong class="make_black"><a href="kathmandu.html"><h3>Kathmandu</h3></a></strong>
+          <a href="kathmandu.html" class="thumbnail pull-left article">
+              <img class="" src="../img/kathmandu_article.jpg" alt="Kathmandu Nepal"></a>
+          <p>Explore Kathmandu with its beautiful historic sites. The area Thamel is the center of backpacking in Nepal. It has surprisingly good nightlife and tasty restaurants. A great start of your Nepalese adventure.
+      </p>
+          <p><a class="btn" href="kathmandu.html">Read more</a></p>
+  				</div>
+          <hr>
+          <div class="row article">
+              <strong class="make_black"><a href="pokhara.html"><h3>Pokhara</h3></a></strong>
+              <a href="pokhara.html" class="thumbnail pull-left article">
+                  <img class="" src="../img/pokhara_article.jpg" alt="Pokhara Nepal"></a>
+              <p>Pokhara is for most people their favorite destination in Nepal and there’s a valid reason for that. You can relax at the lake or seeking adventure in the surrounding area. It’s also the starting point for exploring the Annapurna region. You can’t miss Pokhara if you go to Nepal.
+          </p>
+              <p><a class="btn" href="pokhara.html">Read more</a></p>
+      				</div>
+              <hr>
+              <div class="row article">
+                  <strong class="make_black"><a href="chitwan.html"><h3>Chitwan</h3></a></strong>
+                  <a href="chitwan.html" class="thumbnail pull-left article">
+                      <img class="" src="../img/chitwan_article.jpg" alt="Chitwan Nepal"></a>
+                  <p>Fancy a safari? With tigers, crocodiles and elephants Chitwan National Park is the best place in Nepal to enjoy animals. It was the first national park in Nepal and it’s probably the best.
+              </p>
+                  <p><a class="btn" href="chitwan.html">Read more</a></p>
+          				</div>
+          <hr>
+          <div class="row article">
+              <strong class="make_black"><a href="lumbini.html"><h3>Lumbini</h3></a></strong>
+              <a href="lumbini.html" class="thumbnail pull-left article">
+                  <img class="" src="../img/lumbini_article.jpg" alt="Lumbini Nepal"></a>
+              <p>Lumbini is known as the birthplace of Buddha. If you’re interested in Buddhism you will like this place.</p>
+              <p><a class="btn" href="lumbini.html">Read more</a></p>
+              </div>
+      <hr>
+      <div class="row article">
+          <strong class="make_black"><a href="bhaktapur.html"><h3>Bhaktapur</h3></a></strong>
+          <a href="bhaktapur.html" class="thumbnail pull-left article">
+              <img class="" src="../img/bhaktapur_article.jpg" alt="Bhaktapur Nepal"></a>
+          <p> Bhaktapur is an open air museum. Despite the 2015 earthquake it’s still a beautiful area with a lot of historic sights. Stay here for a night to get the best experience and connect with the locals.</p>
+          <p><a class="btn" href="bhaktapur.html">Read more</a></p>
+          </div>
+  <hr>
+      <div class="row article">
+          <strong class="make_black"><a href="patan.html"><h3>Patan</h3></a></strong>
+          <a href="patan.html" class="thumbnail pull-left article">
+              <img class="" src="../img/patan_article.jpg" alt="Patan Nepal"></a>
+          <p> If you’re in Kathmandu you’ve to visit Patan. It’s a typical historic site with a lot of tempels. They’re a bit harder to find compared to Bhaktapur but it’s a lot of fun to find them. Especially the golden temple is beautiful.</p>
+          <p><a class="btn" href="patan.html">Read more</a></p>
+      </div>
+<hr>
+<div class="row article">
+    <strong class="make_black"><a href="dhulikhel.html"><h3>Dhulikhel</h3></a></strong>
+    <a href="dhulikhel.html" class="thumbnail pull-left article">
+        <img class="" src="../img/dhulikhel_article.jpg" alt="Dhulikhel Nepal"></a>
+    <p>Not a lot of people go to Dhulikhel but it’s one of the best places if you want a view over the Himalaya. It’s a great place to escape from other tourists for a couple days. There’s also an interesting hike to the Namobuddha Monastery.</p>
+    <p><a class="btn" href="dhulikhel.html">Read more</a></p>
+</div>
+<hr>
+<div class="row article">
+    <strong class="make_black"><a href="ebctrek.html"><h3>Everest Basecamp Trek</h3></a></strong>
+    <a href="ebctrek.html" class="thumbnail pull-left article">
+        <img class="" src="../img/ebctrek_article.jpg" alt="Everest Basecamp Trek Nepal"></a>
+    <p>Looking for a challenge? Hike to the basecamp of Mount Everest and get a taste of climbing to the summit. We explain everything you need to know to prepare yourself for this rewarding hike.</p>
+    <p><a class="btn" href="ebctrek.html">Read more</a></p>
+</div>
+<hr>
+<div class="row article">
+    <strong class="make_black"><a href="annapurna.html"><h3>Annapurna Circuit Trek</h3></a></strong>
+    <a href="annapurna.html" class="thumbnail pull-left article">
+        <img class="" src="../img/annapurna_article.jpg" alt="Annapurna Circuit Trek Nepal"></a>
+    <p>Probably the most famous hike of Nepal and definitely one of the best hikes in the world. In about 3 weeks you circle around mount Annapurna. A very versatile hike with beautiful sceneries.</p>
+    <p><a class="btn" href="annapurna.html">Read more</a></p>
+</div>
+<hr>
+<div class="row article">
+    <strong class="make_black"><a href="annapurnasanctrek.html"><h3>Annapurna Sanctuary Trek</h3></a></strong>
+    <a href="annapurnasanctrek.html" class="thumbnail pull-left article">
+        <img class="" src="../img/annapurnasanctrek_article.jpg" alt="Annapurna Sanctuary Trek Nepal"></a>
+    <p>Annapurna Sanctuary trek is a short but stunning hike to Annapurna Base Camp. If you don’t have the time to hike to Everest Base Camp or Annapurna Circuit Trek this is a good alternative.</p>
+    <p><a class="btn" href="annapurnasanctrek.html">Read more</a></p>
+</div>
+<hr>
+		</div>
+		<div class="col-lg-3 col-md-3 col-sm-3">
+      <div class="panel panel-default panel_dest">
+        <div class="panel-heading"><h2>All Destinations</h2></div>
+        <div class="panel-body">
+			<ul class="list-unstyled make_black">
+        <a href="kathmandu.html"><li>Kathmandu</li></a>
+        <a href="pokhara.html"><li>Pokhara</li></a>
+        <a href="chitwan.html"><li>Chitwan</li></a>
+        <a href="lumbini.html"><li>Lumbini</li></a>
+        <a href="bhaktapur.html"><li>Bhaktapur</li></a>
+        <a href="patan.html"><li>Patan</li></a>
+        <a href="dhulikhel.html"><li>Dhulikhel</li></a>
+        <a href="ebctrek.html"><li>Everest Base Camp trek</li></a>
+        <a href="annapurna.html"><li>Annapurna Circuit trek</li></a>
+        <a href="annapurnasanctrek.html"><li>Annapurna Sanctuary trek</li></a>
+			</ul>
+    </div>
+    </div>
+		</div>
+	</div>
+</div>
+<footer class="text-center"><p>Backpacker Nepal, Copyright &copy; 2018</p></footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../js/bootstrap.min.js"></script>
+</body>
+</html>

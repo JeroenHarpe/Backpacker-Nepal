@@ -215,6 +215,12 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   background-size: 100% !important;
 }
 
+.jumbotron_bhaktapur {
+  background: url('../img/bhaktapur_jumbo.jpg') no-repeat center center !important;
+  background-size: 100% !important;
+}
+
+
 #scrollspy nav {
   margin: auto !important;
   background: #fe860f;

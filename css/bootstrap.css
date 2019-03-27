@@ -311,7 +311,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   animation: showText 0.9s ease;
   -webkit-clip-path: circle(30.4% at 50% 50%);
   clip-path: circle(30.4% at 50% 50%);
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .anim a::after{
@@ -325,7 +325,7 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   animation: showText 0.9s ease;
   -webkit-clip-path: circle(30.4% at 50% 50%);
   clip-path: circle(30.4% at 50% 50%);
-  animation-delay: 1.5s;
+  animation-delay: 2.5s;
 }
 
 @keyframes animateText {

@@ -220,6 +220,11 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   background-size: 100% !important;
 }
 
+.jumbotron_patan {
+  background: url('../img/patan_jumbo.jpg') no-repeat center center !important;
+  background-size: 100% !important;
+}
+
 
 #scrollspy nav {
   margin: auto !important;
